@@ -90,8 +90,6 @@ PairingResult NukiBle::pairNuki(AuthorizationIdType idType) {
   
   if (pairingLastSeen < millis() - 2000) pairingServiceAvailable = false;
 
-  if (pairingLastSeen < millis() - 2000) pairingServiceAvailable = false;
-
   if (pairingServiceAvailable && bleAddress != BLEAddress("")) {
     pairingServiceAvailable = false;
     #ifdef DEBUG_NUKI_CONNECT
