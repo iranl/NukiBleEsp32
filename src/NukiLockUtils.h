@@ -23,24 +23,24 @@ namespace NukiLock {
 void cmdResultToString(const CmdResult state, char* str);
 
 
-void logLockErrorCode(uint8_t errorCode);
-void logConfig(Config config);
-void logNewConfig(NewConfig newConfig);
-void logNewKeypadEntry(NewKeypadEntry newKeypadEntry);
-void logKeypadEntry(KeypadEntry keypadEntry);
-void logUpdatedKeypadEntry(UpdatedKeypadEntry updatedKeypadEntry);
-void logAuthorizationEntry(AuthorizationEntry authorizationEntry);
-void logNewAuthorizationEntry(NewAuthorizationEntry newAuthorizationEntry);
-void logUpdatedAuthorizationEntry(UpdatedAuthorizationEntry updatedAuthorizationEntry);
-void logNewTimeControlEntry(NewTimeControlEntry newTimeControlEntry);
-void logTimeControlEntry(TimeControlEntry timeControlEntry);
-void logCompletionStatus(CompletionStatus completionStatus);
-void logNukiTrigger(Trigger nukiTrigger);
-void logLockAction(LockAction lockAction);
-void logKeyturnerState(KeyTurnerState keyTurnerState);
-void logBatteryReport(BatteryReport batteryReport);
-void logLogEntry(LogEntry logEntry);
-void logAdvancedConfig(AdvancedConfig advancedConfig);
-void logNewAdvancedConfig(NewAdvancedConfig newAdvancedConfig);
+void logLockErrorCode(uint8_t errorCode, bool debug = false);
+void logConfig(Config config, bool debug = false);
+void logNewConfig(NewConfig newConfig, bool debug = false);
+void logNewKeypadEntry(NewKeypadEntry newKeypadEntry, bool debug = false);
+void logKeypadEntry(KeypadEntry keypadEntry, bool debug = false);
+void logUpdatedKeypadEntry(UpdatedKeypadEntry updatedKeypadEntry, bool debug = false);
+void logAuthorizationEntry(AuthorizationEntry authorizationEntry, bool debug = false);
+void logNewAuthorizationEntry(NewAuthorizationEntry newAuthorizationEntry, bool debug = false);
+void logUpdatedAuthorizationEntry(UpdatedAuthorizationEntry updatedAuthorizationEntry, bool debug = false);
+void logNewTimeControlEntry(NewTimeControlEntry newTimeControlEntry, bool debug = false);
+void logTimeControlEntry(TimeControlEntry timeControlEntry, bool debug = false);
+void logCompletionStatus(CompletionStatus completionStatus, bool debug = false);
+void logNukiTrigger(Trigger nukiTrigger, bool debug = false);
+void logLockAction(LockAction lockAction, bool debug = false);
+void logKeyturnerState(KeyTurnerState keyTurnerState, bool debug = false);
+void logBatteryReport(BatteryReport batteryReport, bool debug = false);
+void logLogEntry(LogEntry logEntry, bool debug = false);
+void logAdvancedConfig(AdvancedConfig advancedConfig, bool debug = false);
+void logNewAdvancedConfig(NewAdvancedConfig newAdvancedConfig, bool debug = false);
 
 } // namespace Nuki

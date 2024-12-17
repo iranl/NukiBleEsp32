@@ -252,7 +252,7 @@ class NukiBle : public BLEClientCallbacks, public BleScanner::Subscriber {
      * creates the BLE client, sets the BLE callback and checks if the lock is paired
      * (if credentials are stored in preferences)
      */
-    void initialize();
+    void initialize(bool initAltConnect = false);
 
     /**
      * @brief the transmission power.
@@ -312,6 +312,41 @@ class NukiBle : public BLEClientCallbacks, public BleScanner::Subscriber {
     int64_t getLastHeartbeat();
     #endif
 
+     /**
+     * @brief Whether to enable or disable connect debug logging
+     *
+     * @param enable Set to true to enable connect debug logging
+     */
+    void setDebugConnect(bool enable);
+
+     /**
+     * @brief Whether to enable or disable communication debug logging
+     *
+     * @param enable Set to true to enable communication debug logging
+     */
+    void setDebugCommunication(bool enable);
+
+     /**
+     * @brief Whether to enable or disable readable data debug logging
+     *
+     * @param enable Set to true to enable readable data debug logging
+     */
+    void setDebugReadableData(bool enable);
+
+     /**
+     * @brief Whether to enable or disable hex data debug logging
+     *
+     * @param enable Set to true to enable hex data debug logging
+     */
+    void setDebugHexData(bool enable);
+
+     /**
+     * @brief Whether to enable or disable command debug logging
+     *
+     * @param enable Set to true to enable command debug logging
+     */
+    void setDebugCommand(bool enable);
+
   protected:
     bool connectBle(const BLEAddress bleAddress, bool pairing);
     void extendDisconnectTimeout();
@@ -328,7 +363,6 @@ class NukiBle : public BLEClientCallbacks, public BleScanner::Subscriber {
     template <typename TDeviceAction>
     Nuki::CmdResult cmdChallAccStateMachine(const TDeviceAction action);
 
-  protected:
     virtual void handleReturnMessage(Command returnCode, unsigned char* data, uint16_t dataLen);
     virtual void logErrorCode(uint8_t errorCode) = 0;
 
@@ -339,6 +373,12 @@ class NukiBle : public BLEClientCallbacks, public BleScanner::Subscriber {
 
     Command lastMsgCodeReceived = Command::Empty;
 
+    bool debugNukiConnect = false;
+    bool debugNukiCommunication = false;
+    bool debugNukiReadableData = false;
+    bool debugNukiHexData = false;
+    bool debugNukiCommand = false;
+
   private:
     #ifndef NUKI_MUTEX_RECURSIVE
     SemaphoreHandle_t nukiBleSemaphore = xSemaphoreCreateMutex();
@@ -348,7 +388,8 @@ class NukiBle : public BLEClientCallbacks, public BleScanner::Subscriber {
     bool takeNukiBleSemaphore(std::string taker);
     std::string owner = "free";
     void giveNukiBleSemaphore();
-
+    
+    bool altConnect = false;
     bool connecting = false;
     bool statusUpdated = false;
     uint16_t timeoutDuration = 1000;
